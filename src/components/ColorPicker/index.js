@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './index.module.scss';
 
-const HSLColorBox = ({ hue, saturation, lightness, onUpdateHsl }) => {
+const HSLColorBox = memo(({ hue, saturation, lightness, onUpdateHsl }) => {
   const colorGrid = [];
   const handleColorBoxItemClick = (saturation, lightness) => {
     onUpdateHsl({ hue, saturation, lightness });
-  }
+  };
   for (let i = 100; i >= 0; i--) {
     for (let j = 0; j <= 100; j++) {
       colorGrid.push(
         <div
           key={`color-box-item-${i}-${j}`}
           className={cx(styles.colorBoxItem, {
-            [styles.selected]: (i === saturation && j === lightness)
+            [styles.selected]: i === saturation && j === lightness,
           })}
           style={{
             backgroundColor: `hsl(${hue}, ${i}%, ${j}%)`,
@@ -25,7 +25,7 @@ const HSLColorBox = ({ hue, saturation, lightness, onUpdateHsl }) => {
     }
   }
   return <div className={styles.colorBox}>{colorGrid}</div>;
-};
+});
 
 HSLColorBox.propTypes = {
   hue: PropTypes.number,
@@ -36,13 +36,14 @@ HSLColorBox.propTypes = {
 
 const HSLColorLine = ({ hue, saturation, lightness, onUpdateHsl }) => {
   const colorLine = [];
-  const handleColorLineItemClick = newHue => onUpdateHsl({ hue: newHue, saturation, lightness });
+  const handleColorLineItemClick = (newHue) =>
+    onUpdateHsl({ hue: newHue, saturation, lightness });
   for (let i = 0; i < 360; i++) {
     colorLine.push(
       <div
         key={`color-line-item-${i}`}
         className={cx(styles.colorLineItem, {
-          [styles.selected]: hue === i
+          [styles.selected]: hue === i,
         })}
         style={{ backgroundColor: `hsl(${i}, 100%, 50%)` }}
         onClick={() => handleColorLineItemClick(i)}

@@ -90,7 +90,7 @@ const CanvasBoard = (props) => {
     setIsHighlighting(true);
     const ctx = getCanvasHighlighterContext();
     ctx.strokeStyle = `hsl(${hue} ${saturation}% ${lightness}%)`;
-    ctx.lineWidth = 10;
+    ctx.lineWidth = 5;
     ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(...coordinates);

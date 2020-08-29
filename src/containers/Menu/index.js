@@ -1,11 +1,12 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import menuActions from 'redux/actions/menu';
-import ColorPicker from 'components/ColorPicker';
-import MenuItems from 'components/MenuItems';
-import StrokeWidthPicker from 'components/StrokeWidthPicker';
 import { MENU_ITEMS } from 'constants/menu';
 import styles from './index.module.scss';
+
+const ColorPicker = lazy(() => import('components/ColorPicker'));
+const MenuItems = lazy(() => import('components/MenuItems'));
+const StrokeWidthPicker = lazy(() => import('components/StrokeWidthPicker'));
 
 const Menu = (props) => {
   const dispatch = useDispatch();
