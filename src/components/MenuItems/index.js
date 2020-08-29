@@ -1,25 +1,30 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { MENU_ITEMS, PEN_STROKE_WIDTH } from 'constants/menu';
+import camelCase from 'lodash/camelCase';
+import upperFirst from 'lodash/upperFirst';
+import { MENU_ITEMS } from 'constants/menu';
+import * as MenuIcons from 'shared/icons/MenuIcons';
 import styles from './index.module.scss';
 
 const MenuItem = ({ name, value, selectedMenuItem, onClick }) => {
+  const Icon = MenuIcons[`${upperFirst(camelCase(value))}Icon`] || MenuIcons.PenIcon;
   const handleMenuItemClick = () => {
-    if(selectedMenuItem === value) {
+    if (selectedMenuItem === value) {
       onClick('');
     } else {
       onClick(value);
     }
-  }
+  };
   return (
     <div
       className={cx(styles.menuItemWrapper, {
-        [styles.active]: selectedMenuItem === value,
+        [styles.active]: selectedMenuItem === value && value !== MENU_ITEMS.CLEAR,
       })}
       onClick={handleMenuItemClick}
     >
-      {value}
+      <Icon className={styles.icon} />
+      <div className={styles.name}>{value}</div>
     </div>
   );
 };

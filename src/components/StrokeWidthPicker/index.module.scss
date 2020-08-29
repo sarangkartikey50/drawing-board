@@ -1,0 +1,23 @@
+.container {
+  position: absolute;
+  bottom: 136px;
+  right: 120px;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  .itemWrapper {
+    padding: 16px;
+    border-bottom: 1px solid #c4c4c4;
+    transition: 0.3s;
+    &:hover {
+      transition: 0.3s;
+      cursor: pointer;
+      background: #c4c4c4;
+    }
+    &.active {
+      background: #c4c4c4;
+    }
+    .item {
+      width: 100px;
+    }
+  }
+}

@@ -5,11 +5,9 @@ import styles from './index.module.scss';
 
 const HSLColorBox = ({ hue, saturation, lightness, onUpdateHsl }) => {
   const colorGrid = [];
-
   const handleColorBoxItemClick = (saturation, lightness) => {
     onUpdateHsl({ hue, saturation, lightness });
   }
-
   for (let i = 100; i >= 0; i--) {
     for (let j = 0; j <= 100; j++) {
       colorGrid.push(
@@ -61,7 +59,7 @@ HSLColorLine.propTypes = {
   onUpdateHsl: PropTypes.func,
 };
 
-const ColorPallete = ({ selectedColor, onColorUpdate }) => {
+const ColorPicker = ({ selectedColor, onColorUpdate }) => {
   return (
     <div className={styles.container}>
       <HSLColorLine {...selectedColor} onUpdateHsl={onColorUpdate} />
@@ -71,9 +69,9 @@ const ColorPallete = ({ selectedColor, onColorUpdate }) => {
   );
 };
 
-ColorPallete.propTypes = {
+ColorPicker.propTypes = {
   selectedColor: PropTypes.object,
   onColorUpdate: PropTypes.func,
 };
 
-export default memo(ColorPallete);
+export default memo(ColorPicker);
