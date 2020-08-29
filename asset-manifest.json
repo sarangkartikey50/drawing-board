@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/drawing-board/static/css/main.567751cd.chunk.css",
+    "main.js": "/drawing-board/static/js/main.57b4fb9a.chunk.js",
+    "main.js.map": "/drawing-board/static/js/main.57b4fb9a.chunk.js.map",
+    "runtime-main.js": "/drawing-board/static/js/runtime-main.b9929f02.js",
+    "runtime-main.js.map": "/drawing-board/static/js/runtime-main.b9929f02.js.map",
+    "static/js/2.53b14922.chunk.js": "/drawing-board/static/js/2.53b14922.chunk.js",
+    "static/js/2.53b14922.chunk.js.map": "/drawing-board/static/js/2.53b14922.chunk.js.map",
+    "static/css/3.d99079a5.chunk.css": "/drawing-board/static/css/3.d99079a5.chunk.css",
+    "static/js/3.62050a51.chunk.js": "/drawing-board/static/js/3.62050a51.chunk.js",
+    "static/js/3.62050a51.chunk.js.map": "/drawing-board/static/js/3.62050a51.chunk.js.map",
+    "static/css/4.7a0dc2a6.chunk.css": "/drawing-board/static/css/4.7a0dc2a6.chunk.css",
+    "static/js/4.bb2b5fdb.chunk.js": "/drawing-board/static/js/4.bb2b5fdb.chunk.js",
+    "static/js/4.bb2b5fdb.chunk.js.map": "/drawing-board/static/js/4.bb2b5fdb.chunk.js.map",
+    "static/css/5.e1018018.chunk.css": "/drawing-board/static/css/5.e1018018.chunk.css",
+    "static/js/5.219578ec.chunk.js": "/drawing-board/static/js/5.219578ec.chunk.js",
+    "static/js/5.219578ec.chunk.js.map": "/drawing-board/static/js/5.219578ec.chunk.js.map",
+    "static/css/6.26469add.chunk.css": "/drawing-board/static/css/6.26469add.chunk.css",
+    "static/js/6.301f274e.chunk.js": "/drawing-board/static/js/6.301f274e.chunk.js",
+    "static/js/6.301f274e.chunk.js.map": "/drawing-board/static/js/6.301f274e.chunk.js.map",
+    "index.html": "/drawing-board/index.html",
+    "precache-manifest.554371755cb35d7e20d07cbd96dc8f79.js": "/drawing-board/precache-manifest.554371755cb35d7e20d07cbd96dc8f79.js",
+    "service-worker.js": "/drawing-board/service-worker.js",
+    "static/css/3.d99079a5.chunk.css.map": "/drawing-board/static/css/3.d99079a5.chunk.css.map",
+    "static/css/4.7a0dc2a6.chunk.css.map": "/drawing-board/static/css/4.7a0dc2a6.chunk.css.map",
+    "static/css/5.e1018018.chunk.css.map": "/drawing-board/static/css/5.e1018018.chunk.css.map",
+    "static/css/6.26469add.chunk.css.map": "/drawing-board/static/css/6.26469add.chunk.css.map",
+    "static/css/main.567751cd.chunk.css.map": "/drawing-board/static/css/main.567751cd.chunk.css.map",
+    "static/js/2.53b14922.chunk.js.LICENSE.txt": "/drawing-board/static/js/2.53b14922.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9929f02.js",
+    "static/js/2.53b14922.chunk.js",
+    "static/css/main.567751cd.chunk.css",
+    "static/js/main.57b4fb9a.chunk.js"
+  ]
+}
