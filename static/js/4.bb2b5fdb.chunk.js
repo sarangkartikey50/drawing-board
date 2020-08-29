@@ -1,2 +1,0 @@
-(this["webpackJsonpdrawing-board"]=this["webpackJsonpdrawing-board"]||[]).push([[4],{63:function(n,a,e){n.exports={container:"Header_container__7iTTy"}},67:function(n,a,e){"use strict";e.r(a);var r=e(0),t=e.n(r),i=e(63),o=e.n(i);a.default=Object(r.memo)((function(){return t.a.createElement("div",{className:o.a.container},"drawing board")}))}}]);
-//# sourceMappingURL=4.bb2b5fdb.chunk.js.map
