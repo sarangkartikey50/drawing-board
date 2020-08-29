@@ -1,0 +1,50 @@
+$colorBoxItemSize: 360px/101;
+.container {
+  display: flex;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 160px;
+  .colorLine {
+    .colorLineItem {
+      height: 1px;
+      width: 50px;
+      &:hover {
+        box-shadow: 0 8px 8px 0 rgba(black, 0.5);
+        transform: scaleX(1.5) scaleY(10);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      &.selected {
+        box-shadow: 0 8px 8px 0 rgba(black, 0.5);
+        transform: scaleX(1.5) scaleY(10);
+        border-radius: 10px;
+      }
+    }
+  }
+  .colorBox{
+    margin-left: 20px;
+    display: grid;
+    grid-template: repeat(101, $colorBoxItemSize) / repeat(101, $colorBoxItemSize);
+    .colorBoxItem {
+      height: $colorBoxItemSize;
+      width: $colorBoxItemSize;
+      &:hover {
+        transform: scale(10);
+        border-radius: 1px;
+        cursor: pointer;
+        box-shadow: 0 8px 8px 0 rgba(black, 0.5);
+      }
+      &.selected {
+        box-shadow: 0 8px 8px 0 rgba(black, 0.5);
+        transform: scale(10);
+        border-radius: 1px;
+      }
+    }
+  }
+  .selectedColor {
+    height: 360px;
+    width: 50px;
+    margin-left: 20px;
+  }
+}

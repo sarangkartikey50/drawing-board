@@ -1,0 +1,25 @@
+.container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #c4c4c4;
+  .menuItemWrapper {
+    padding: 4px;
+    border-bottom: 1px solid #c4c4c4;
+    text-transform: uppercase;
+    transition: 0.3s;
+    &:hover {
+      background: #c4c4c4;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    &.active {
+      background: #c4c4c4;
+    }
+    &:last-child {
+      border-bottom: unset;
+    }
+  }
+}
