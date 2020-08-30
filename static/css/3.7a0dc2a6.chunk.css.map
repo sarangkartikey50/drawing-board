@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.module.scss"],"names":[],"mappings":"AAAA,yBACE,cAAe,CACf,eAAiB,CACjB,qBAAsB,CACtB,wBAAyB,CACzB,iBAAkB,CAClB,QAAS,CACT,SAAU","file":"3.7a0dc2a6.chunk.css","sourcesContent":[".container {\n  font-size: 24px;\n  font-weight: bold;\n  font-family: monospace;\n  text-transform: uppercase;\n  position: absolute;\n  top: 20px;\n  left: 20px;\n}\n"]}
