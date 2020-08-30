@@ -1,11 +1,22 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
+import { useSelector } from 'react-redux';
 import CanvasBoard from 'containers/CanvasBoard';
 import Menu from 'containers/Menu';
-const Header = lazy(() => import('components/Header'));
+import Header from 'components/Header';
 
 function App() {
+  const { hue, saturation, lightness } = useSelector(
+    (state) => state.menu.color
+  );
   return (
-    <div className="App">
+    <div
+      style={{
+        '--selectedColor': `hsl(${hue} ${saturation}% ${lightness}%)`,
+        '--hue': hue,
+        '--saturation': `${saturation}%`,
+        '--lightness': `${lightness}%`,
+      }}
+    >
       <Suspense fallback={'loading...'}>
         <Header />
         <CanvasBoard />

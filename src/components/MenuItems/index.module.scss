@@ -4,15 +4,16 @@
   right: 20px;
   border-radius: 4px;
   overflow: hidden;
-  border: 1px solid #c4c4c4;
+  border: 1px solid var(--selectedColor);
   z-index: 2;
   .menuItemWrapper {
     padding: 4px;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid var(--selectedColor);
     text-transform: uppercase;
     transition: 0.3s;
     display: grid;
     place-items: center;
+    background: hsla(var(--hue), var(--saturation), var(--lightness), 0.2);
     &:hover {
       background: #c4c4c4;
       transition: 0.3s;
@@ -24,8 +25,12 @@
     &:last-child {
       border-bottom: unset;
     }
+    .icon {
+      color: var(--selectedColor, #333333);
+    }
     .name {
       font-size: 10px;
+      color: var(--selectedColor, #333333);
     }
   }
 }

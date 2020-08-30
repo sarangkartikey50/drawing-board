@@ -3,9 +3,9 @@ import { PEN_STROKE_WIDTH } from 'constants/menu';
 
 const initState = {
   color: {
-    hue: 0,
-    saturation: 100,
-    lightness: 50,
+    hue: 5,
+    saturation: 10,
+    lightness: 20,
   },
   selectedMenuItem: '',
   selectedStrokeWidth: PEN_STROKE_WIDTH[0],
