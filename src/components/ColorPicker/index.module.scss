@@ -5,6 +5,9 @@ $colorBoxItemSize: 360px/101;
   position: absolute;
   bottom: 0;
   right: 120px;
+  &.hide {
+    display: none;
+  }
   .colorLine {
     .colorLineItem {
       height: 1px;

@@ -12,7 +12,9 @@ const Menu = (props) => {
   const dispatch = useDispatch();
   const color = useSelector((state) => state.menu.color);
   const selectedMenuItem = useSelector((state) => state.menu.selectedMenuItem);
-  const selectedStrokeWidth = useSelector((state) => state.menu.selectedStrokeWidth);
+  const selectedStrokeWidth = useSelector(
+    (state) => state.menu.selectedStrokeWidth
+  );
 
   const handleColorUpdate = useCallback(
     (hsl) => dispatch(menuActions.updateColor(hsl)),
@@ -35,9 +37,13 @@ const Menu = (props) => {
         selectedMenuItem={selectedMenuItem}
         onMenuItemClick={handleMenuItemClick}
       />
-      {selectedMenuItem === MENU_ITEMS.COLOR_PICKER && (
-        <ColorPicker onColorUpdate={handleColorUpdate} selectedColor={color} />
-      )}
+      {/* {selectedMenuItem === MENU_ITEMS.COLOR_PICKER && ( */}
+      <ColorPicker
+        hide={selectedMenuItem !== MENU_ITEMS.COLOR_PICKER}
+        onColorUpdate={handleColorUpdate}
+        selectedColor={color}
+      />
+      {/* )} */}
       {selectedMenuItem === MENU_ITEMS.PEN && (
         <StrokeWidthPicker
           selectedColor={color}
