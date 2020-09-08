@@ -50,7 +50,7 @@ HSLColorBox.propTypes = {
   onUpdateHsl: PropTypes.func,
 };
 
-const HSLColorLine = ({ hue, saturation, lightness, onUpdateHsl }) => {
+const HSLColorLine = memo(({ hue, saturation, lightness, onUpdateHsl }) => {
   const colorLine = [];
   const handleColorLineItemClick = (newHue) =>
     onUpdateHsl({ hue: newHue, saturation, lightness });
@@ -67,7 +67,7 @@ const HSLColorLine = ({ hue, saturation, lightness, onUpdateHsl }) => {
     );
   }
   return <div className={styles.colorLine}>{colorLine}</div>;
-};
+});
 
 HSLColorLine.propTypes = {
   hue: PropTypes.number,

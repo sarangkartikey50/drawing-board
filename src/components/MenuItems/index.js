@@ -7,10 +7,15 @@ import { MENU_ITEMS } from 'constants/menu';
 import * as MenuIcons from 'shared/icons/MenuIcons';
 import styles from './index.module.scss';
 
-const MenuItem = ({ name, value, selectedMenuItem, onClick }) => {
-  const Icon = MenuIcons[`${upperFirst(camelCase(value))}Icon`] || MenuIcons.PenIcon;
+const MenuItem = memo(({ name, value, selectedMenuItem, onClick }) => {
+  const Icon =
+    MenuIcons[`${upperFirst(camelCase(value))}Icon`] || MenuIcons.PenIcon;
   const handleMenuItemClick = () => {
-    if (selectedMenuItem === value) {
+    if(value === MENU_ITEMS.UNDO && selectedMenuItem.includes(value)) {
+      onClick(`${value}${Date.now()}`);
+    } else if(value === MENU_ITEMS.REDO && selectedMenuItem.includes(value)) {
+      onClick(`${value}${Date.now()}`);
+    } else if (selectedMenuItem === value) {
       onClick('');
     } else {
       onClick(value);
@@ -19,7 +24,9 @@ const MenuItem = ({ name, value, selectedMenuItem, onClick }) => {
   return (
     <div
       className={cx(styles.menuItemWrapper, {
-        [styles.active]: selectedMenuItem === value && value !== MENU_ITEMS.CLEAR,
+        [styles.active]:
+          selectedMenuItem === value &&
+          value !== MENU_ITEMS.CLEAR
       })}
       onClick={handleMenuItemClick}
     >
@@ -27,7 +34,7 @@ const MenuItem = ({ name, value, selectedMenuItem, onClick }) => {
       <div className={styles.name}>{value}</div>
     </div>
   );
-};
+});
 
 const MenuItems = ({ selectedMenuItem, onMenuItemClick }) => {
   return (

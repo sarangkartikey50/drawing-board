@@ -14,11 +14,15 @@ const CanvasBoard = (props) => {
   const [isDrawingLine, setIsDrawingLine] = useState(false);
   const [isErasing, setIsErasing] = useState(false);
   const [isHighlighting, setIsHighlighting] = useState(false);
+  const [canvasStates, setCanvasStates] = useState([]);
+  const [currentCanvasState, setCurrentCanvasState] = useState(-1);
   const { hue, saturation, lightness } = useSelector(
     (state) => state.menu.color
   );
   const selectedMenuItem = useSelector((state) => state.menu.selectedMenuItem);
-  const selectedStrokeWidth = useSelector((state) => state.menu.selectedStrokeWidth);
+  const selectedStrokeWidth = useSelector(
+    (state) => state.menu.selectedStrokeWidth
+  );
 
   useLayoutEffect(() => {
     setCanvasHeight(window.innerHeight);
@@ -47,21 +51,67 @@ const CanvasBoard = (props) => {
   }, []);
 
   useLayoutEffect(() => {
-    if(selectedMenuItem === MENU_ITEMS.CLEAR) {
-      const ctx = getCanvasPenContext();
-      const highlighterCtx = getCanvasHighlighterContext();
-      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-      highlighterCtx.clearRect(0, 0, highlighterCtx.canvas.width, highlighterCtx.canvas.height);
+    const ctx = getCanvasPenContext();
+    if (selectedMenuItem === MENU_ITEMS.CLEAR) {
+      clearCanvas();
+      setCanvasStates([]);
+    } else if (
+      selectedMenuItem.includes(MENU_ITEMS.UNDO) &&
+      currentCanvasState >= 0
+    ) {
+      undoCanvas(ctx);
+    } else if (
+      selectedMenuItem.includes(MENU_ITEMS.REDO) &&
+      currentCanvasState < canvasStates.length
+    ) {
+      redoCanvas(ctx);
     }
   }, [selectedMenuItem]);
 
-  const getCanvasPenContext = () => {
-    return window.__DB_CANVAS_PEN_CONTEXT_2D ?? {};
+  const clearCanvas = () => {
+    const ctx = getCanvasPenContext();
+    const highlighterCtx = getCanvasHighlighterContext();
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    highlighterCtx.clearRect(
+      0,
+      0,
+      highlighterCtx.canvas.width,
+      highlighterCtx.canvas.height
+    );
   };
 
-  const getCanvasHighlighterContext = () => {
-    return window.__DB_CANVAS_HIGHLIGHTER_CONTEXT_2D ?? {};
+  const undoCanvas = (ctx) => {
+    const newCanvasState = currentCanvasState - 1;
+    setCurrentCanvasState(newCanvasState);
+    clearCanvas();
+    if (newCanvasState >= 0 && canvasStates[newCanvasState]) {
+      const image = new Image();
+      image.src = canvasStates[newCanvasState];
+      image.onload = function () {
+        ctx.drawImage(image, 0, 0);
+      };
+    }
   };
+
+  const redoCanvas = (ctx) => {
+    const newCanvasState = currentCanvasState + 1;
+    if (newCanvasState < canvasStates.length && canvasStates[newCanvasState]) {
+      clearCanvas();
+      setCurrentCanvasState(newCanvasState);
+      const image = new Image();
+      image.src = canvasStates[newCanvasState];
+      image.onload = function () {
+        ctx.drawImage(image, 0, 0);
+      };
+    }
+  };
+
+  const getCanvasPenContext = () => window.__DB_CANVAS_PEN_CONTEXT_2D ?? {};
+
+  const getPenCanvasElement = () => window.__DB_CANVAS_ELEMENT ?? {};
+
+  const getCanvasHighlighterContext = () =>
+    window.__DB_CANVAS_HIGHLIGHTER_CONTEXT_2D ?? {};
 
   const initLine = () => {
     setIsDrawingLine(true);
@@ -156,6 +206,7 @@ const CanvasBoard = (props) => {
   };
 
   const handleMouseUpEvent = (event) => {
+    const penCanvas = getPenCanvasElement();
     switch (selectedMenuItem) {
       case MENU_ITEMS.PEN:
         disposeLine();
@@ -167,6 +218,11 @@ const CanvasBoard = (props) => {
         disposeHighlighter();
         break;
       default:
+    }
+    if (penCanvas?.toDataURL) {
+      const newCanvasStates = [...canvasStates, penCanvas.toDataURL()]
+      setCanvasStates(newCanvasStates);
+      setCurrentCanvasState(newCanvasStates.length - 1);
     }
   };
 

@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 const Header = () => {
   return (
-    <div className={styles.container} contentEditable>
+    <div className={styles.container}>
       drawing board
     </div>
   );

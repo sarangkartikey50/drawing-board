@@ -3,7 +3,9 @@ const MENU_ITEMS = {
   COLOR_PICKER: 'color picker',
   ERASER: 'eraser',
   HIGHLIGHER: 'highlighter',
-  CLEAR: 'clear'
+  CLEAR: 'clear',
+  UNDO: 'undo',
+  REDO: 'redo',
 };
 
 const PEN_STROKE_WIDTH = [1, 3, 5];
